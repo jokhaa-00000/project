@@ -276,7 +276,7 @@ body {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 620px) {
   .eyebrow {
     font-size: 44px;
   }
@@ -513,7 +513,7 @@ button:hover {
   color: #142133;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 620px) {
   .contact-info {
     flex-direction: column;
     align-items: center;
@@ -561,7 +561,7 @@ button:hover {
 .social-icon:hover {
   background-color: #555;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
   .burgerbt {
     display: block;
   }
@@ -669,7 +669,7 @@ nav a:hover {
 }
 
 /* --- 600px-ზე ქვემოთ --- */
-@media (max-width: 600px) {
+@media (max-width: 620px) {
   .menu-icon {
     display: flex;
   }
@@ -707,5 +707,180 @@ nav a:hover {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+}
+
+body,
+html {
+  width: 100%;
+  /* მალავს ჰორიზონტალურ სქროლს (ქვემოთა სქროლს) */
+  overflow-x: hidden;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* ... sxva stilebi ... */
+}
+
+.nav-menu {
+  /* Es xazi uzrunvelyofs, rom tagebi gorizontalurad Cans */
+  display: flex;
+  gap: 15px;
+}
+
+/* Hamburgeri did ekranze imaleba */
+.hamburger {
+  display: none;
+}
+
+/* --- Adaptacia (Patara Ekrani: max-width: 768px) --- */
+@media screen and (max-width: 768px) {
+  /* Hamburgeri gamoichineba */
+  .hamburger {
+    display: block;
+  }
+
+  /* Meniu: Axla mTlian ekrans faravs 0.4s animaciiT */
+  .nav-menu {
+    /* SHECVLILI PROPERTY-EBI */
+    position: fixed; /* Ekranis marto erT adgilze iqneba */
+    top: 0; /* Tavidan skroliT ar moicera */
+    left: 0;
+    width: 100%;
+    height: 100vh; /* mTeli ekranis simaRle */
+
+    background-color: rgba(13, 71, 161, 0.95); /* Molurjo backgroundi */
+    z-index: 1000; /* MniSvnelovania, rom yvelaferi dafaros */
+
+    /* Animacia: 0.4 wamshi gamoichineba/gadadis */
+    transition: transform 0.4s ease-in-out;
+
+    /* Tavidan gaweulia ekranis marcxniv (damaluli) */
+    transform: translateX(-100%);
+
+    /* Flexbox-i vertikaluri centririrebisaTvis */
+    flex-direction: column;
+    justify-content: center; /* Centririreba simaRleze */
+    align-items: center; /* Centririreba siganeze */
+
+    /* Damaleba default-ze ar gvchirdeba radgan transform(-100%) asrulebs amas */
+    display: flex; /* unda iyos flex, rom justify/align mushaobdes */
+  }
+
+  /* Meniu aqtiuri da gamoCenili */
+  .nav-menu.active {
+    transform: translateX(0); /* GamoCena (nulze dabruneba) */
+  }
+
+  .nav-link {
+    color: white;
+    font-size: 1.5em; /* Didi zoma full screen-ze */
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ... Hamburgeris "X" Transformacia ... */
+}
+
+/* Meniu: gamoCena dacherisas */
+.nav-menu.active {
+  display: flex; /* MniSvnelovania, rom gamoCndes */
+  max-height: 300px; /* Unda iyos sakmarisi, rom yvela linki daatieT */
+  padding-bottom: 10px;
+}
+
+/* Nav linkebis stilebi (Tavidan TeTri) */
+.nav-link {
+  color: white;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ... (Hamburgeris "X" Transformacia ar icvleba) ... */
+
+/* --- Hamburger Ikonis Stilebi --- */
+.hamburger {
+  display: none; /* Tavidan ar chans did ekranze */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001; /* MniSvnelovania meniu-s zeviT iyos */
+}
+
+.hamburger .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: #333;
+  transition: all 0.3s ease-in-out; /* Animacia ro ikona iqces X-ad */
+}
+
+/* --- Adaptacia (Patara Ekrani) --- */
+@media screen and (max-width: 768px) {
+  /* Hamburgeri gamoichineba */
+  .hamburger {
+    display: block;
+  }
+
+  /* Meniu patara ekranze (molurjo, 0.4s animacia) */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(
+      13,
+      71,
+      161,
+      0.95
+    ); /* Molurjo backgroundi (SegiZliaT es feri SecvaloT) */
+    z-index: 1000;
+
+    /* Ani-macia: 0.4 wamshi gamoichineba/gadadis */
+    transition: transform 0.4s ease-in-out;
+
+    /* Tavidan gaweulia ekranis marcxniv (damaluli) */
+    transform: translateX(-100%);
+
+    /* Flexbox-i vertikaluri centririrebisaTvis */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Meniu aqtiuri da gamoCenili (JavaScript-i daamateds am klass) */
+  .nav-menu.active {
+    transform: translateX(0); /* GamoCena */
+  }
+
+  .nav-link {
+    color: white; /* TeTri teqsti molurjo fonze */
+    font-size: 1.5em;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hamburgeris "X" Transformacia (opcionaluri) */
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0; /* Sashualo xazi imaleba */
+  }
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg); /* Zeda xazi itrireba */
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); /* Qveda xazi itrireba */
   }
 }
